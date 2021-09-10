@@ -5,7 +5,7 @@ const app = express();
 const fs = require('fs');
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
-// const port = (8000)
+const port = process.env.PORT || 8000;
 
 main().catch(err => console.log(err));
 
@@ -83,5 +83,9 @@ app.post('/contact', function (req, res) {
 
 
 // the port link
-app.listen(8000);
-console.log('Express server started');
+// app.set('port', process.env.PORT);
+// console.log('Express server started');
+
+app.listen(port, () =>{
+  console.log(`listen to the port no at ${port}`);
+})
